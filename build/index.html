@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle"></title>
+
+    <!-- social media tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@joshdmiller">
+    <meta name="twitter:title" content="ngBoilerplate">
+    <meta name="twitter:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
+    <meta name="twitter:creator" content="@joshdmiller">
+    <meta name="twitter:image:src" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846">
+    <meta property="og:title" content="ngBoilerplate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://bit.ly/ngBoilerplate" />
+    <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
+    <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/ngbp-0.3.2.css" />
+    <script type="text/javascript">
+      
+    </script>
+
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="vendor/angular/angular.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vendor/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-jwt/dist/angular-jwt.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-utils/modules/route/route.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-utils/modules/mask/mask.js"></script>
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vendor/pace/pace.js"></script>
+    <script type="text/javascript" src="vendor/fast-click/fastclick.min.js"></script>
+    <script type="text/javascript" src="src/app/about/about.js"></script>
+    <script type="text/javascript" src="src/app/app.js"></script>
+    <script type="text/javascript" src="src/app/food/food.js"></script>
+    <script type="text/javascript" src="src/app/health/health.js"></script>
+    <script type="text/javascript" src="src/app/home/home.js"></script>
+    <script type="text/javascript" src="src/app/journal/journal.js"></script>
+    <script type="text/javascript" src="src/app/login/login.js"></script>
+    <script type="text/javascript" src="src/app/models/login_code.model.js"></script>
+    <script type="text/javascript" src="src/app/models/user.model.js"></script>
+    <script type="text/javascript" src="src/app/my_profile/my_profile.js"></script>
+    <script type="text/javascript" src="src/common/appStorage.js"></script>
+    <script type="text/javascript" src="src/common/config.js"></script>
+    <script type="text/javascript" src="src/common/plusOne/plusOne.js"></script>
+    <script type="text/javascript" src="templates-common.js"></script>
+    <script type="text/javascript" src="templates-app.js"></script>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
+  </head>
+  <body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+        ng-click="menuCollapsed = ! menuCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">
+        Healthbot
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" collapse="menuCollapsed">
+      <ul class="nav navbar-nav" ng-show="authenticated">
+        <li ui-sref-active="active">
+          <a href ui-sref="home">
+            <i class="fa fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a href ui-sref="food">
+            <i class="fa fa-cutlery"></i>
+            Nutrition
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a href ui-sref="health">
+            <i class="fa fa-heart"></i>
+            Health
+          </a>
+        </li>
+        <li ui-sref-active="active">
+          <a href ui-sref="journal">
+            <i class="fa fa-pencil"></i>
+            Journal
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i> {{user.name||'Account'}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="my_profile">My Profile</a></li>
+            <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+    <div class="container" id="main-content" ui-view="main"></div>
+  </body>
+</html>

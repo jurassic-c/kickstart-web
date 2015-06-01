@@ -1,0 +1,32 @@
+<h3>My Profile</h3>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form name="form" novalidate>
+      <div class="form-group" ng-class="{'has-success': form.user_name.$dirty && form.user_name.$valid}">
+        <label for="user.name">Name</label>
+        <input ng-disabled="form_submitting" type="text" name="user_name" ng-model="user.name" id="user.name" class="form-control">
+      </div>
+      <div class="form-group" ng-class="{'has-success': form.user_email.$dirty && form.user_email.$valid, 'has-error': form.user_email.$invalid}">
+        <label for="user.email">Email</label>
+        <input ng-disabled="form_submitting" type="email" name="user_email" ng-model="user.email" id="user.email" class="form-control" >
+        <span ng-show="form.user_email.$invalid" class="help-block">Email must be a valid email address and must be one that nobody else is using.</span>
+      </div>
+      <div class="form-group" ng-class="{'has-success': form.user_phone.$dirty && form.user_phone.$valid}">
+        <label for="user.phone">Phone</label>
+        <input ng-disabled="form_submitting" type="tel" ng-model="user.phone" id="user.phone" class="form-control" name="user_phone">
+      </div>
+      <div class="form-group" ng-class="{'has-success': form.user_password.$dirty && form.user_password.$valid}">
+        <label for="user.password">New Password</label>
+        <input ng-disabled="form_submitting" type="password" ng-model="user.password" id="user.password" class="form-control" name="user_password">
+      </div>
+      <div class="form-group" ng-class="{'has-success': form.user_re_password.$dirty && form.user_re_password.$valid, 'has-error': form.user_re_password.$dirty && form.user_re_password.$invalid}">
+        <label for="user.re_password">Repeat New Password</label>
+        <input ng-disabled="form_submitting" type="password" ng-model="user.re_password" id="user.re_password" class="form-control" pw-match="user.password" name="user_re_password">
+      </div>
+      <div class="form-group">
+        <button ng-disabled="form_submitting" ng-click="save()" class="btn btn-primary"><i ng-show="form_submitting" class="fa fa-spinner fa-spin"></i><span ng-hide="form_submitting">Save</span></button>
+      </div>
+    </form>
+  </div>
+</div>
